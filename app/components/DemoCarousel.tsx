@@ -28,6 +28,7 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
   const modalTouchStartY = useRef(0);
 
   const anyHasSound = screens.some((s) => s.hasSound);
+  const anyVideo = screens.some((s) => s.type === "video");
   const currentScreen = screens[current];
 
   const goTo = useCallback((index: number) => {
@@ -222,8 +223,8 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
             ))}
           </div>
 
-          {/* Paused → play button */}
-          {!playing && !expanded && (
+          {/* Paused → play button (videos only) */}
+          {anyVideo && !playing && !expanded && (
             <div
               className="absolute inset-0 flex items-center justify-center cursor-pointer z-[5]"
               onClick={handlePlayTap}
@@ -284,30 +285,32 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
           {/* Controls above the phone */}
           <div
             className="flex items-center justify-end gap-3 w-full px-6 mb-3"
-            style={{ maxWidth: "min(80vw, 320px)" }}
+            style={{ maxWidth: "min(75vw, 300px)" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Mute toggle */}
-            <button
-              className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer"
-              style={{ background: "rgba(255,255,255,0.2)" }}
-              onClick={toggleMute}
-              aria-label={muted ? "Unmute" : "Mute"}
-            >
-              {muted ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <line x1="23" y1="9" x2="17" y2="15" />
-                  <line x1="17" y1="9" x2="23" y2="15" />
-                </svg>
-              ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                </svg>
-              )}
-            </button>
+            {/* Mute toggle (videos only) */}
+            {anyVideo && (
+              <button
+                className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer"
+                style={{ background: "rgba(255,255,255,0.2)" }}
+                onClick={toggleMute}
+                aria-label={muted ? "Unmute" : "Mute"}
+              >
+                {muted ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <line x1="23" y1="9" x2="17" y2="15" />
+                    <line x1="17" y1="9" x2="23" y2="15" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  </svg>
+                )}
+              </button>
+            )}
 
             {/* Close */}
             <button

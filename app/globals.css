@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #C47850;
+  --color-primary-light: #E8A888;
+  --color-accent: #E89850;
+  --color-text: #4A3832;
+  --color-text-muted: #9A8078;
+  --color-bg-gradient-top: #E8D0D8;
+  --color-bg-gradient-bottom: #F0D8A0;
+  --color-surface-card: rgba(255, 252, 248, 0.9);
+  --color-surface-card-alt: rgba(255, 245, 235, 0.9);
+  --color-bubble-user: #FFFFFF;
+  --color-bubble-ai: #FAE8DC;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-accent: var(--color-accent);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #FFFCF8;
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent orphan words on new lines */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* Form inputs */
+.tuteo-input {
+  background: rgba(255, 252, 248, 0.95);
+  color: var(--color-text);
+  border: 1px solid transparent;
+}
+
+.tuteo-input:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(232, 168, 136, 0.3);
+}
+
+.tuteo-input::placeholder {
+  color: var(--color-text-muted);
 }

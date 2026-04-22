@@ -48,7 +48,7 @@ export default function ContactPage() {
             method="POST"
             className="flex flex-col gap-5"
           >
-            <input type="hidden" name="_next" value="https://tuteo-site.netlify.app/contact/thanks" />
+            <input type="hidden" name="_next" value="https://tuteo.ai/contact/thanks" />
             <div>
               <label
                 htmlFor="name"

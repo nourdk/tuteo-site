@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DemoCarousel from "./components/DemoCarousel";
 import ComparisonTable from "./components/ComparisonTable";
+import ExpandableText from "./components/ExpandableText";
 
 
 /* ───── Shared components ───── */
@@ -146,6 +147,7 @@ export default function Home() {
         description={<>Solve a murder mystery. Go on a mission at a Mexican market. Build a story together — in Spanish. <span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>You&apos;re practicing past tense and you don&apos;t even notice.</span></>}
         media={<DemoCarousel screens={[
           { type: "video", src: "/videos/detective_edited.mp4", poster: "/posters/detective_edited.jpg", label: "Detective game demo", hasSound: true },
+          { type: "video", src: "/videos/hangman_edit.mp4", poster: "/posters/hangman_edit.jpg", label: "Hangman game demo" },
         ]} />}
         reverse
         background="#FFF8F3"
@@ -310,14 +312,10 @@ export default function Home() {
           >
             Hi, I&apos;m the person behind Tuteo
           </h2>
-          <p
-            className="text-base sm:text-lg leading-relaxed mb-8"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            The best AI products find the moments and places where AI capabilities magnify outcomes, and align everything around them. AI magic is a feeling — a realization you were impacted in a way you didn&apos;t expect, for the better. It could have made a normally difficult task feel easy, or solved a problem exactly at its core, faster than ever. <br /><br />For language learning, it could be catching a common mistake you make and sharing the insight that finally sticks. It could be pulling you into a conversation and only after realizing you actually enjoyed it, and spoke more Spanish than you expected. Or showing up and giving you all the energy and excitement it has.
-            <br /><br />
-            I designed and built Tuteo to explore how AI can transform language learning — from product strategy and user research to design systems and technical implementation — looking forward to pushing it further.
-          </p>
+          <ExpandableText
+            preview={<>I designed and built Tuteo to explore how AI can transform language learning — from product strategy and user research to design systems and technical implementation.</>}
+            full={<><br /><br />I find that the best AI products find the moments and places where AI capabilities magnify outcomes, and align everything around them. While building Tuteo I was constantly looking for AI magical moments that enhance my product (and not clutter it). In the end I came to the conclusion that AI magic is not only big things — like getting AI to code on the fly and do everything under the sun for you. It&apos;s also making the little things your product solves for users so much better. And there is a lot of work that goes into aligning AI with the experience you want users to have, as well as your goals and metrics. Simply put, AI magic today is a feeling — a realization you were impacted by AI in a way you didn&apos;t expect, for the better. It could have made a normally difficult task feel surprisingly easy, or solved a problem exactly at its core, faster than ever.<br /><br />For language learning, it could be catching a common mistake you make and sharing the insight that finally sticks. It could be pulling you into a conversation only to realize after it&apos;s done that you actually enjoyed it, and spoke more Spanish than you expected. I&apos;m looking forward to iterating and seeing where these products will take us.</>}
+          />
           <Link
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-3 rounded-xl text-base font-semibold text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"

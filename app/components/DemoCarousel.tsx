@@ -151,7 +151,20 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
           </button>
         )}
 
-        {/* Phone frame (thumbnail) */}
+        {/* Phone frame with arrows (thumbnail) */}
+        <div className="flex items-center gap-2 sm:hidden">
+          {screens.length > 1 && (
+            <button
+              className="w-6 h-6 flex items-center justify-center cursor-pointer"
+              style={{ visibility: current > 0 ? "visible" : "hidden" }}
+              onClick={() => goTo(current - 1)}
+              aria-label="Previous"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+          )}
         <div
           className="relative w-[160px] sm:w-[240px] md:w-[260px] rounded-[2rem] overflow-hidden touch-pan-y"
           style={{
@@ -241,7 +254,7 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
           )}
 
           {/* Playing + muted → "Turn sound on!" */}
-          {playing && muted && !expanded && (
+          {playing && muted && !expanded && currentScreen.hasSound && (
             <div
               className="absolute inset-0 flex items-center justify-center z-[5] cursor-pointer"
               onClick={toggleMute}
@@ -253,6 +266,19 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
                 Turn sound on!
               </p>
             </div>
+          )}
+        </div>
+          {screens.length > 1 && (
+            <button
+              className="w-6 h-6 flex items-center justify-center cursor-pointer"
+              style={{ visibility: current < screens.length - 1 ? "visible" : "hidden" }}
+              onClick={() => goTo(current + 1)}
+              aria-label="Next"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
           )}
         </div>
 
@@ -278,10 +304,11 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
       {/* ── Fullscreen modal (mobile only) ── */}
       {expanded && currentScreen.src && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center touch-none"
-          style={{ background: "rgba(0,0,0,0.85)", height: "100dvh" }}
+          className="fixed inset-0 z-50 overflow-y-auto"
+          style={{ background: "rgba(0,0,0,0.85)" }}
           onClick={closeModal}
         >
+          <div className="min-h-full flex flex-col items-center justify-center py-4">
           {/* Controls above the phone */}
           <div
             className="flex items-center justify-end gap-3 w-full px-6 mb-3"
@@ -326,7 +353,22 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
             </button>
           </div>
 
-          {/* Large phone frame with swipe */}
+          {/* Phone frame with arrows */}
+          <div className="flex items-center gap-3" onClick={(e) => e.stopPropagation()}>
+            {/* Left arrow */}
+            {screens.length > 1 && (
+              <button
+                className="w-8 h-8 flex items-center justify-center cursor-pointer"
+                style={{ visibility: current > 0 ? "visible" : "hidden" }}
+                onClick={() => modalGoTo(current - 1)}
+                aria-label="Previous"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+            )}
+
           <div
             className="relative rounded-[2.5rem] overflow-hidden"
             style={{
@@ -341,14 +383,8 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
             }}
             onTouchEnd={(e) => {
               const diffX = modalTouchStartX.current - e.changedTouches[0].clientX;
-              const diffY = modalTouchStartY.current - e.changedTouches[0].clientY;
-              // Vertical swipe → close
-              if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 80) {
-                closeModal();
-                return;
-              }
               // Horizontal swipe → navigate
-              if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+              if (Math.abs(diffX) > 50) {
                 if (diffX > 0 && current < screens.length - 1) modalGoTo(current + 1);
                 if (diffX < 0 && current > 0) modalGoTo(current - 1);
               }
@@ -403,7 +439,7 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
                 )}
 
                 {/* Playing + muted → "Turn sound on!" in modal */}
-                {playing && muted && (
+                {playing && muted && currentScreen.hasSound && (
                   <div
                     className="absolute inset-0 flex items-center justify-center z-[5] pointer-events-none"
                   >
@@ -427,6 +463,21 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
             )}
           </div>
 
+            {/* Right arrow */}
+            {screens.length > 1 && (
+              <button
+                className="w-8 h-8 flex items-center justify-center cursor-pointer"
+                style={{ visibility: current < screens.length - 1 ? "visible" : "hidden" }}
+                onClick={() => modalGoTo(current + 1)}
+                aria-label="Next"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            )}
+          </div>
+
           {/* Pagination dots in modal */}
           {screens.length > 1 && (
             <div className="flex gap-3 mt-4" onClick={(e) => e.stopPropagation()}>
@@ -443,6 +494,7 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
               ))}
             </div>
           )}
+          </div>
         </div>
       )}
     </>

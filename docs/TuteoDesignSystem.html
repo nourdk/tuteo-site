@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuteo Design System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #F8F6F4;
+      color: #4A3832;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 60px 40px;
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      border-radius: 24px;
+    }
+    
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #4A3832;
+      margin-bottom: 8px;
+    }
+    
+    .header .version {
+      font-size: 14px;
+      color: #9A8078;
+      margin-bottom: 24px;
+    }
+    
+    .header .tagline {
+      font-size: 18px;
+      color: #4A3832;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Sections */
+    section {
+      margin-bottom: 60px;
+    }
+    
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4A3832;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    h2::before {
+      content: '';
+      width: 4px;
+      height: 28px;
+      background: #C47850;
+      border-radius: 2px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #4A3832;
+      margin: 24px 0 12px 0;
+    }
+    
+    p {
+      color: #6A5A52;
+      margin-bottom: 16px;
+    }
+    
+    .section-intro {
+      font-size: 16px;
+      color: #9A8078;
+      margin-bottom: 32px;
+      max-width: 700px;
+    }
+    
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    /* Brand personality */
+    .personality-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    
+    .personality-item {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .personality-item .emoji {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .personality-item h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #C47850;
+      margin-bottom: 4px;
+    }
+    
+    .personality-item p {
+      font-size: 13px;
+      color: #9A8078;
+      margin: 0;
+    }
+    
+    /* Color swatches */
+    .color-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .gradient-preview {
+      height: 120px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 16px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .gradient-preview::before {
+      content: 'Background Gradient';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4A3832;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .gradient-label {
+      background: rgba(255,255,255,0.7);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: monospace;
+      color: #4A3832;
+    }
+    
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    
+    .color-swatch {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    .color-swatch .swatch {
+      height: 80px;
+    }
+    
+    .color-swatch .info {
+      padding: 12px;
+    }
+    
+    .color-swatch .name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4A3832;
+    }
+    
+    .color-swatch .hex {
+      font-size: 12px;
+      font-family: monospace;
+      color: #9A8078;
+    }
+    
+    /* Typography */
+    .type-scale {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+    }
+    
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid #F0EBE8;
+    }
+    
+    .type-row:last-child {
+      border-bottom: none;
+    }
+    
+    .type-example {
+      flex: 1;
+    }
+    
+    .type-meta {
+      text-align: right;
+      font-size: 12px;
+      color: #9A8078;
+      font-family: monospace;
+    }
+    
+    .display { font-size: 32px; font-weight: 700; }
+    .title { font-size: 24px; font-weight: 600; }
+    .headline { font-size: 18px; font-weight: 600; }
+    .body { font-size: 16px; font-weight: 400; }
+    .body-small { font-size: 14px; font-weight: 400; }
+    .caption { font-size: 12px; font-weight: 400; color: #9A8078; }
+    .micro { font-size: 10px; font-weight: 500; color: #9A8078; }
+    
+    /* Spacing */
+    .spacing-visual {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .spacing-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .spacing-block {
+      background: linear-gradient(135deg, #E8A888 0%, #C47850 100%);
+      border-radius: 4px;
+    }
+    
+    .spacing-label {
+      font-size: 11px;
+      font-family: monospace;
+      color: #9A8078;
+    }
+    
+    /* Radius */
+    .radius-visual {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .radius-shape {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      border: 2px solid #E8A888;
+    }
+    
+    .radius-label {
+      font-size: 11px;
+      font-family: monospace;
+      color: #9A8078;
+      text-align: center;
+    }
+    
+    /* Components showcase */
+    .component-showcase {
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin: 24px 0;
+    }
+    
+    .component-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    /* Chat bubbles */
+    .chat-demo {
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .bubble {
+      padding: 12px 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4A3832;
+      max-width: 85%;
+    }
+    
+    .bubble-ai {
+      background: #FAE8DC;
+      border-radius: 16px 16px 16px 4px;
+      border-left: 3px solid #E8A888;
+      align-self: flex-start;
+    }
+    
+    .bubble-user {
+      background: #FFFFFF;
+      border-radius: 16px 16px 4px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      align-self: flex-end;
+    }
+    
+    .bubble-time {
+      font-size: 11px;
+      color: #9A8078;
+      margin-top: 4px;
+    }
+    
+    .bubble-time.right {
+      text-align: right;
+    }
+    
+    /* Exercise widget */
+    .exercise-widget {
+      background: linear-gradient(180deg, #FFF8F4 0%, #FFF8E8 100%);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    
+    .exercise-question {
+      text-align: center;
+      font-size: 16px;
+      color: #4A3832;
+      margin-bottom: 16px;
+    }
+    
+    .exercise-blank {
+      border-bottom: 2px solid #C47850;
+      padding: 0 16px;
+      margin: 0 4px;
+    }
+    
+    .exercise-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .exercise-btn {
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .exercise-btn.selected {
+      background: #C47850;
+      color: white;
+    }
+    
+    .exercise-btn.unselected {
+      background: white;
+      color: #C47850;
+      border: 2px solid #E8A888;
+    }
+    
+    .exercise-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    
+    .dot.active { background: #C47850; }
+    .dot.inactive { background: #9A8078; opacity: 0.3; }
+    
+    /* Cards demo */
+    .card-demo {
+      background: rgba(255,252,248,0.9);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 200px;
+    }
+    
+    .card-demo-alt {
+      background: rgba(255,245,235,0.9);
+    }
+    
+    .card-demo h4 {
+      font-size: 12px;
+      color: #9A8078;
+      margin-bottom: 4px;
+    }
+    
+    .card-demo .stat {
+      font-size: 24px;
+      font-weight: 700;
+      color: #C47850;
+    }
+    
+    /* Buttons */
+    .buttons-demo {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease;
+    }
+    
+    .btn:hover {
+      transform: scale(1.02);
+    }
+    
+    .btn-primary {
+      background: #C47850;
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #C47850;
+      border: 2px solid #E8A888;
+    }
+    
+    .btn-ghost {
+      background: transparent;
+      color: #C47850;
+    }
+    
+    /* Input */
+    .input-demo {
+      background: rgba(255,252,248,0.95);
+      border-radius: 999px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 320px;
+      margin: 24px auto 0;
+    }
+    
+    .input-demo span {
+      color: #9A8078;
+      font-size: 14px;
+    }
+    
+    .input-demo .mic {
+      width: 24px;
+      height: 24px;
+      color: #C47850;
+    }
+    
+    /* Progress bar */
+    .progress-demo {
+      max-width: 280px;
+      margin: 24px auto 0;
+    }
+    
+    .progress-label {
+      font-size: 12px;
+      color: #9A8078;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    
+    .progress-track {
+      height: 8px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      width: 52%;
+      background: #E89850;
+      border-radius: 999px;
+    }
+    
+    .progress-value {
+      font-size: 12px;
+      color: #9A8078;
+      text-align: center;
+      margin-top: 4px;
+    }
+    
+    /* Nav bar */
+    .nav-demo {
+      background: rgba(255,252,248,0.95);
+      border-radius: 0 0 24px 24px;
+      padding: 12px 32px;
+      display: flex;
+      justify-content: space-around;
+      max-width: 375px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+    
+    .nav-icon.active { background: #C47850; }
+    .nav-icon.inactive { background: #9A8078; opacity: 0.4; }
+    
+    .nav-label {
+      font-size: 10px;
+    }
+    
+    .nav-label.active { color: #C47850; font-weight: 600; }
+    .nav-label.inactive { color: #9A8078; }
+    
+    /* Voice & Tone */
+    .tone-examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    
+    .tone-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+    }
+    
+    .tone-card.dont {
+      border-left: 3px solid #D88080;
+    }
+    
+    .tone-card.do {
+      border-left: 3px solid #80B888;
+    }
+    
+    .tone-icon {
+      font-size: 20px;
+    }
+    
+    .tone-content h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9A8078;
+      margin-bottom: 4px;
+    }
+    
+    .tone-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    /* Do's and Don'ts */
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    
+    .guidelines-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+    }
+    
+    .guidelines-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .guidelines-card.do h4 { color: #5A9A70; }
+    .guidelines-card.dont h4 { color: #C47850; }
+    
+    .guidelines-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .guidelines-card li {
+      font-size: 14px;
+      color: #6A5A52;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .guidelines-card.do li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #5A9A70;
+      font-weight: 600;
+    }
+    
+    .guidelines-card.dont li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: #C47850;
+      font-weight: 600;
+    }
+    
+    /* Code blocks */
+    .code-block {
+      background: #2D2A26;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+    
+    .code-block code {
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 13px;
+      color: #E8D0D8;
+      line-height: 1.6;
+    }
+    
+    .code-block .comment { color: #9A8078; }
+    .code-block .property { color: #E8A888; }
+    .code-block .value { color: #F0D8A0; }
+    
+    /* Quick reference */
+    .quick-ref {
+      background: linear-gradient(135deg, #E8D0D8 0%, #F0D8A0 100%);
+      border-radius: 24px;
+      padding: 32px;
+    }
+    
+    .quick-ref h3 {
+      color: #4A3832;
+      margin-bottom: 20px;
+    }
+    
+    .quick-ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+    }
+    
+    .quick-ref-item {
+      background: rgba(255,255,255,0.8);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .quick-ref-item .swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      margin: 0 auto 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .quick-ref-item .name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #4A3832;
+    }
+    
+    .quick-ref-item .hex {
+      font-size: 10px;
+      font-family: monospace;
+      color: #9A8078;
+    }
+    
+    /* Phone mockup */
+    .phone-mockup {
+      width: 280px;
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    
+    .phone-screen {
+      background: linear-gradient(180deg, #E8D0D8 0%, #F0D8A0 100%);
+      border-radius: 32px;
+      overflow: hidden;
+      min-height: 500px;
+    }
+    
+    .phone-notch {
+      width: 80px;
+      height: 24px;
+      background: black;
+      border-radius: 12px;
+      margin: 8px auto 16px;
+    }
+    
+    .phone-content {
+      padding: 0 16px 16px;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: #9A8078;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Tuteo</h1>
+      <p class="version">Design System v1.0 · January 2026</p>
+      <p class="tagline">A conversational language learning app that feels like chatting with a supportive friend. Warm, patient, and judgment-free.</p>
+    </header>
+    
+    <!-- Brand Personality -->
+    <section>
+      <h2>Brand Personality</h2>
+      <p class="section-intro">Tuteo creates a safe space for language learners. Every design decision should reinforce these core traits:</p>
+      
+      <div class="personality-grid">
+        <div class="personality-item">
+          <div class="emoji">🌅</div>
+          <h4>Warm</h4>
+          <p>Approachable colors, soft edges, encouraging feedback</p>
+        </div>
+        <div class="personality-item">
+          <div class="emoji">🌱</div>
+          <h4>Patient</h4>
+          <p>Never rushes, celebrates small wins</p>
+        </div>
+        <div class="personality-item">
+          <div class="emoji">💬</div>
+          <h4>Friendly</h4>
+          <p>Like texting a supportive friend</p>
+        </div>
+        <div class="personality-item">
+          <div class="emoji">🤝</div>
+          <h4>Supportive</h4>
+          <p>Gentle corrections, positive reinforcement</p>
+        </div>
+        <div class="personality-item">
+          <div class="emoji">✨</div>
+          <h4>Confident</h4>
+          <p>Clean design that builds trust</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Colors -->
+    <section>
+      <h2>Color System</h2>
+      <p class="section-intro">The "Sunset Warmth" palette evokes golden hour — inviting, energizing, and optimistic. Mistakes feel safe, progress feels rewarding.</p>
+      
+      <div class="color-section">
+        <!-- Gradient -->
+        <div class="gradient-preview">
+          <span class="gradient-label">#E8D0D8</span>
+          <span class="gradient-label">#F0D8A0</span>
+        </div>
+        
+        <!-- Primary Colors -->
+        <h3>Primary Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="swatch" style="background: #C47850;"></div>
+            <div class="info">
+              <div class="name">Primary</div>
+              <div class="hex">#C47850</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background: #E8A888;"></div>
+            <div class="info">
+              <div class="name">Primary Light</div>
+              <div class="hex">#E8A888</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background: #E89850;"></div>
+            <div class="info">
+              <div class="name">Accent</div>
+              <div class="hex">#E89850</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text Colors -->
+        <h3>Text Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="swatch" style="background: #4A3832;"></div>
+            <div class="info">
+              <div class="name">Text Primary</div>
+              <div class="hex">#4A3832</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background: #9A8078;"></div>
+            <div class="info">
+              <div class="name">Text Muted</div>
+              <div class="hex">#9A8078</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Surface Colors -->
+        <h3>Surface Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="swatch" style="background: #FFFFFF; border: 1px solid #eee;"></div>
+            <div class="info">
+              <div class="name">User Bubble</div>
+              <div class="hex">#FFFFFF</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background: #FAE8DC;"></div>
+            <div class="info">
+              <div class="name">AI Bubble</div>
+              <div class="hex">#FAE8DC</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background: linear-gradient(180deg, #FFF8F4 0%, #FFF8E8 100%);"></div>
+            <div class="info">
+              <div class="name">Exercise Card</div>
+              <div class="hex">Gradient</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Typography -->
+    <section>
+      <h2>Typography</h2>
+      <p class="section-intro">System fonts for optimal performance. Warm, readable, never harsh.</p>
+      
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-example display">2.5 Hours</div>
+          <div class="type-meta">Display · 32px · Bold</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example title">Your Journey</div>
+          <div class="type-meta">Title · 24px · Semibold</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example headline">Recent Achievements</div>
+          <div class="type-meta">Headline · 18px · Semibold</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example body">¿Quieres probar con otro verbo irregular?</div>
+          <div class="type-meta">Body · 16px · Regular</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example body-small">Completed present tense module</div>
+          <div class="type-meta">Body Small · 14px · Regular</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example caption">9:34 PM</div>
+          <div class="type-meta">Caption · 12px · Regular</div>
+        </div>
+        <div class="type-row">
+          <div class="type-example micro">FOCUS THIS WEEK</div>
+          <div class="type-meta">Micro · 10px · Medium</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Spacing -->
+    <section>
+      <h2>Spacing</h2>
+      <p class="section-intro">4px base unit for consistent rhythm throughout the interface.</p>
+      
+      <div class="spacing-visual">
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 4px; height: 4px;"></div>
+          <span class="spacing-label">4px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 8px; height: 8px;"></div>
+          <span class="spacing-label">8px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 12px; height: 12px;"></div>
+          <span class="spacing-label">12px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 16px; height: 16px;"></div>
+          <span class="spacing-label">16px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 20px; height: 20px;"></div>
+          <span class="spacing-label">20px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 24px; height: 24px;"></div>
+          <span class="spacing-label">24px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-block" style="width: 32px; height: 32px;"></div>
+          <span class="spacing-label">32px</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Border Radius -->
+    <section>
+      <h2>Border Radius</h2>
+      <p class="section-intro">Generously rounded corners to feel friendly and approachable.</p>
+      
+      <div class="radius-visual">
+        <div class="radius-item">
+          <div class="radius-shape" style="border-radius: 8px;"></div>
+          <span class="radius-label">8px<br>Small</span>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="border-radius: 12px;"></div>
+          <span class="radius-label">12px<br>Medium</span>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="border-radius: 16px;"></div>
+          <span class="radius-label">16px<br>Large</span>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="border-radius: 24px;"></div>
+          <span class="radius-label">24px<br>XL</span>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="border-radius: 999px;"></div>
+          <span class="radius-label">Full<br>Pill</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Components -->
+    <section>
+      <h2>Components</h2>
+      <p class="section-intro">Core UI building blocks, shown on the actual gradient background.</p>
+      
+      <div class="component-showcase">
+        <h3 style="text-align: center; color: #4A3832; margin-bottom: 24px;">Chat Bubbles & Exercise Widget</h3>
+        
+        <div class="component-row">
+          <!-- Chat Demo -->
+          <div class="chat-demo">
+            <div class="bubble bubble-ai">
+              ¿Quieres probar con otro verbo irregular o prefieres seguir con algo más?
+            </div>
+            <div class="bubble-time">9:03 PM</div>
+            
+            <div class="bubble bubble-user">
+              Opciones múltiples, por favor.
+            </div>
+            <div class="bubble-time right">9:04 PM</div>
+          </div>
+          
+          <!-- Exercise Widget -->
+          <div class="exercise-widget">
+            <p class="exercise-question">
+              La sopa <span class="exercise-blank"></span> caliente.
+            </p>
+            <div class="exercise-buttons">
+              <button class="exercise-btn selected">ser</button>
+              <button class="exercise-btn unselected">estar</button>
+            </div>
+            <div class="exercise-dots">
+              <div class="dot active"></div>
+              <div class="dot inactive"></div>
+              <div class="dot inactive"></div>
+              <div class="dot inactive"></div>
+              <div class="dot inactive"></div>
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="text-align: center; color: #4A3832; margin: 32px 0 24px;">Cards</h3>
+        
+        <div class="component-row">
+          <div class="card-demo">
+            <h4>Accuracy</h4>
+            <div class="stat">75.0%</div>
+          </div>
+          <div class="card-demo">
+            <h4>Complexity</h4>
+            <div class="stat">Okay</div>
+          </div>
+          <div class="card-demo card-demo-alt">
+            <h4>Needs Practice</h4>
+            <div class="stat">52%</div>
+          </div>
+        </div>
+        
+        <h3 style="text-align: center; color: #4A3832; margin: 32px 0 24px;">Buttons</h3>
+        
+        <div class="buttons-demo">
+          <button class="btn btn-primary">Primary Action</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-ghost">Ghost</button>
+        </div>
+        
+        <h3 style="text-align: center; color: #4A3832; margin: 32px 0 24px;">Input Field</h3>
+        
+        <div class="input-demo">
+          <span>Type a message</span>
+          <svg class="mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        
+        <h3 style="text-align: center; color: #4A3832; margin: 32px 0 24px;">Progress Bar</h3>
+        
+        <div class="progress-demo">
+          <div class="progress-label">Progress</div>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="progress-value">52%</div>
+        </div>
+        
+        <h3 style="text-align: center; color: #4A3832; margin: 32px 0 24px;">Navigation Bar</h3>
+        
+        <div class="nav-demo">
+          <div class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#9A8078" opacity="0.6">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22" fill="white"/>
+            </svg>
+            <span class="nav-label inactive">Home</span>
+          </div>
+          <div class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#C47850">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span class="nav-label active">Chat</span>
+          </div>
+          <div class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A8078" stroke-width="2" opacity="0.6">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <span class="nav-label inactive">Journey</span>
+          </div>
+          <div class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#9A8078" opacity="0.6">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <span class="nav-label inactive">Settings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Iconography -->
+    <section>
+      <h2>Iconography</h2>
+      <p class="section-intro">Core icons used throughout Tuteo. 24px default size, 2px stroke weight for outlined icons.</p>
+      
+      <div class="card" style="margin-top: 24px;">
+        <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; padding: 20px;">
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#C47850">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22" fill="white"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Home</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#C47850">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Chat</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C47850" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Journey</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#C47850">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Settings</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C47850" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Microphone</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C47850" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Back</span>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 48px; height: 48px; background: #FAF6F4; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C47850" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+            </div>
+            <span style="font-size: 12px; color: #9A8078;">Info</span>
+          </div>
+          
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #F0EBE8;">
+          <h4 style="font-size: 14px; color: #4A3832; margin-bottom: 12px;">Icon Guidelines</h4>
+          <ul style="font-size: 13px; color: #6A5A52; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>• <strong>Size:</strong> 24px default, 20px for compact UI, 16px for inline</li>
+            <li>• <strong>Stroke:</strong> 2px weight, rounded caps and joins</li>
+            <li>• <strong>Active state:</strong> Primary color (#C47850)</li>
+            <li>• <strong>Inactive state:</strong> Text Muted (#9A8078) at 60% opacity</li>
+            <li>• <strong>Style:</strong> Mix of filled (Home, Chat, Settings) and outlined (Journey, Mic, Info)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Voice & Tone -->
+    <section>
+      <h2>Voice & Tone</h2>
+      <p class="section-intro">Tuteo is a supportive friend, not a strict teacher. Copy should feel encouraging, casual, patient, and warm.</p>
+      
+      <div class="tone-examples">
+        <div class="tone-card dont">
+          <div class="tone-icon">❌</div>
+          <div class="tone-content">
+            <h4>Correct answer</h4>
+            <p>"Correct."</p>
+          </div>
+        </div>
+        <div class="tone-card do">
+          <div class="tone-icon">✅</div>
+          <div class="tone-content">
+            <h4>Correct answer</h4>
+            <p>"¡Perfecto! You got it."</p>
+          </div>
+        </div>
+        
+        <div class="tone-card dont">
+          <div class="tone-icon">❌</div>
+          <div class="tone-content">
+            <h4>Wrong answer</h4>
+            <p>"Incorrect. The answer is X."</p>
+          </div>
+        </div>
+        <div class="tone-card do">
+          <div class="tone-icon">✅</div>
+          <div class="tone-content">
+            <h4>Wrong answer</h4>
+            <p>"Almost! It's actually X — here's why..."</p>
+          </div>
+        </div>
+        
+        <div class="tone-card dont">
+          <div class="tone-icon">❌</div>
+          <div class="tone-content">
+            <h4>Exercise intro</h4>
+            <p>"Complete the following."</p>
+          </div>
+        </div>
+        <div class="tone-card do">
+          <div class="tone-icon">✅</div>
+          <div class="tone-content">
+            <h4>Exercise intro</h4>
+            <p>"Let's practice together."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Guidelines -->
+    <section>
+      <h2>Do's and Don'ts</h2>
+      
+      <div class="guidelines-grid">
+        <div class="guidelines-card do">
+          <h4>✓ Do</h4>
+          <ul>
+            <li>Use the gradient background consistently</li>
+            <li>Keep corners rounded and friendly</li>
+            <li>Celebrate user progress warmly</li>
+            <li>Maintain clear contrast between user and AI messages</li>
+            <li>Use soft shadows sparingly</li>
+            <li>Frame mistakes as learning opportunities</li>
+          </ul>
+        </div>
+        <div class="guidelines-card dont">
+          <h4>✗ Don't</h4>
+          <ul>
+            <li>Use harsh borders or outlines on cards</li>
+            <li>Make error states feel punishing</li>
+            <li>Use cold or clinical colors</li>
+            <li>Overcrowd the interface</li>
+            <li>Use heavy drop shadows</li>
+            <li>Rush or pressure the learner</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Quick Reference -->
+    <section>
+      <h2>Quick Reference</h2>
+      
+      <div class="quick-ref">
+        <h3>Colors at a Glance</h3>
+        <div class="quick-ref-grid">
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #C47850;"></div>
+            <div class="name">Primary</div>
+            <div class="hex">#C47850</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #E8A888;"></div>
+            <div class="name">Primary Light</div>
+            <div class="hex">#E8A888</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #E89850;"></div>
+            <div class="name">Accent</div>
+            <div class="hex">#E89850</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #4A3832;"></div>
+            <div class="name">Text</div>
+            <div class="hex">#4A3832</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #9A8078;"></div>
+            <div class="name">Text Muted</div>
+            <div class="hex">#9A8078</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
+            <div class="name">User Bubble</div>
+            <div class="hex">#FFFFFF</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #FAE8DC;"></div>
+            <div class="name">AI Bubble</div>
+            <div class="hex">#FAE8DC</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #E8D0D8;"></div>
+            <div class="name">Gradient Top</div>
+            <div class="hex">#E8D0D8</div>
+          </div>
+          <div class="quick-ref-item">
+            <div class="swatch" style="background: #F0D8A0;"></div>
+            <div class="name">Gradient Bottom</div>
+            <div class="hex">#F0D8A0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CSS Variables -->
+    <section>
+      <h2>CSS Variables</h2>
+      <p class="section-intro">Copy these into your project for easy implementation.</p>
+      
+      <div class="code-block">
+        <code>
+<span class="comment">/* Tuteo Design System - Sunset Warmth */</span>
+
+:root {
+  <span class="comment">/* Primary */</span>
+  <span class="property">--color-primary</span>: <span class="value">#C47850</span>;
+  <span class="property">--color-primary-light</span>: <span class="value">#E8A888</span>;
+  <span class="property">--color-accent</span>: <span class="value">#E89850</span>;
+
+  <span class="comment">/* Text */</span>
+  <span class="property">--color-text</span>: <span class="value">#4A3832</span>;
+  <span class="property">--color-text-muted</span>: <span class="value">#9A8078</span>;
+
+  <span class="comment">/* Background */</span>
+  <span class="property">--color-bg-gradient-top</span>: <span class="value">#E8D0D8</span>;
+  <span class="property">--color-bg-gradient-bottom</span>: <span class="value">#F0D8A0</span>;
+
+  <span class="comment">/* Surfaces */</span>
+  <span class="property">--color-surface-card</span>: <span class="value">rgba(255, 252, 248, 0.9)</span>;
+  <span class="property">--color-surface-card-alt</span>: <span class="value">rgba(255, 245, 235, 0.9)</span>;
+  <span class="property">--color-bubble-user</span>: <span class="value">#FFFFFF</span>;
+  <span class="property">--color-bubble-ai</span>: <span class="value">#FAE8DC</span>;
+
+  <span class="comment">/* Spacing */</span>
+  <span class="property">--space-1</span>: <span class="value">4px</span>;
+  <span class="property">--space-2</span>: <span class="value">8px</span>;
+  <span class="property">--space-3</span>: <span class="value">12px</span>;
+  <span class="property">--space-4</span>: <span class="value">16px</span>;
+  <span class="property">--space-5</span>: <span class="value">20px</span>;
+  <span class="property">--space-6</span>: <span class="value">24px</span>;
+  <span class="property">--space-8</span>: <span class="value">32px</span>;
+
+  <span class="comment">/* Radius */</span>
+  <span class="property">--radius-sm</span>: <span class="value">8px</span>;
+  <span class="property">--radius-md</span>: <span class="value">12px</span>;
+  <span class="property">--radius-lg</span>: <span class="value">16px</span>;
+  <span class="property">--radius-xl</span>: <span class="value">24px</span>;
+  <span class="property">--radius-full</span>: <span class="value">9999px</span>;
+}
+        </code>
+      </div>
+    </section>
+    
+    <footer class="footer">
+      <p>Tuteo Design System · v1.0 · January 2026</p>
+      <p style="margin-top: 8px; font-size: 12px;">This is a living document. Update as Tuteo evolves.</p>
+    </footer>
+    
+  </div>
+</body>
+</html>

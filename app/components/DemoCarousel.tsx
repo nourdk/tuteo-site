@@ -152,10 +152,10 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
         )}
 
         {/* Phone frame with arrows (thumbnail) */}
-        <div className="flex items-center gap-2 sm:hidden">
+        <div className="flex items-center gap-2">
           {screens.length > 1 && (
             <button
-              className="w-6 h-6 flex items-center justify-center cursor-pointer"
+              className="w-6 h-6 flex items-center justify-center cursor-pointer sm:hidden"
               style={{ visibility: current > 0 ? "visible" : "hidden" }}
               onClick={() => goTo(current - 1)}
               aria-label="Previous"
@@ -270,7 +270,7 @@ export default function DemoCarousel({ screens, delay = 0 }: DemoCarouselProps) 
         </div>
           {screens.length > 1 && (
             <button
-              className="w-6 h-6 flex items-center justify-center cursor-pointer"
+              className="w-6 h-6 flex items-center justify-center cursor-pointer sm:hidden"
               style={{ visibility: current < screens.length - 1 ? "visible" : "hidden" }}
               onClick={() => goTo(current + 1)}
               aria-label="Next"

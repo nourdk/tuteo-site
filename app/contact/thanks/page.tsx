@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Thanks — Tuteo",
+  title: "Thanks,Tuteo",
 };
 
 export default function ThanksPage() {

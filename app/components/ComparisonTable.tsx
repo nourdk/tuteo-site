@@ -6,7 +6,7 @@ const competitors = ["Duolingo", "Speak", "Human tutor"] as const;
 
 const rows = [
   ["Adapts to your level", "Somewhat", "Placement test", "Yes", "Real-time"],
-  ["Talks about your interests", "No", "Preset scenarios", "Limited", "Anything — with web search"],
+  ["Talks about your interests", "No", "Preset scenarios", "Limited", "Anything,with web search"],
   ["Available anytime", "Yes", "Yes", "No", "Yes"],
   ["Measures real fluency", "Streaks", "Pronunciation only", "Subjectively", "Speed, accuracy, vocab"],
   ["Actually fun", "Gamified drills", "Polished but drill-oriented", "Depends", "Detective games, missions, stories"],

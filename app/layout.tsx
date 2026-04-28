@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tuteo — Learn Languages by Actually Talking",
+  title: "Tuteo,Learn Languages by Actually Talking",
   description:
     "Tuteo is a conversational language learning app that adapts to your level, tracks your fluency, and makes practice feel like chatting with a friend.",
 };

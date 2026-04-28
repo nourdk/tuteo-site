@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Contact — Tuteo",
+  title: "Contact,Tuteo",
   description: "Get in touch to discuss product, AI, or language learning.",
 };
 

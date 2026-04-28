@@ -2,6 +2,7 @@ import Link from "next/link";
 import DemoCarousel from "./components/DemoCarousel";
 import ComparisonTable from "./components/ComparisonTable";
 import ExpandableText from "./components/ExpandableText";
+import FeatureShowcase from "./components/FeatureShowcase";
 
 
 /* ───── Shared components ───── */
@@ -114,7 +115,7 @@ export default function Home() {
           className="mt-6 text-lg sm:text-xl max-w-xl leading-relaxed"
           style={{ color: "var(--color-text-muted)" }}
         >
-          A voice-first AI companion for <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>practicing Spanish</span> — with a real curriculum underneath.
+          A voice-first AI companion for <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>practicing Spanish</span>, with a real curriculum underneath.
         </p>
         <div className="mt-10">
           <Link
@@ -128,95 +129,48 @@ export default function Home() {
       </section>
 
       {/* ── 2. Real conversations ── */}
-      <FeatureSection
+      <FeatureShowcase
         id="features"
-        title={<>Real conversations.<br />Learning woven in.</>}
-        description={<>Talk about your day, debate the news, geek out about CRISPR technology — <em>in Spanish and English based on your proficiency</em>. Grammar reminders and short drills appear organically.<br /><span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>It&apos;s your life, in a new language.</span></>}
-        media={<DemoCarousel screens={[
-          { type: "video", src: "/videos/conversation_edited2.mp4", poster: "/posters/conversation_edited2.jpg", label: "Conversation demo", hasSound: true },
-          { type: "video", src: "/videos/camera_edited.mp4", poster: "/posters/camera_edited.jpg", label: "Camera demo", hasSound: true },
-          { type: "video", src: "/videos/lesson_walkthrough_sound.mp4", poster: "/posters/lesson_walkthrough_sound.jpg", label: "Lesson walkthrough", hasSound: true },
-          { type: "video", src: "/videos/exercise_edited.mp4", poster: "/posters/exercise_edited.jpg", label: "Exercise demo", hasSound: true },
-        ]} delay={3000} />}
+        sectionTitle="Real conversations. Learning woven in."
+        slides={[
+          { type: "video", src: "/videos/camera_edited.mp4", poster: "/posters/camera_edited.jpg", hasSound: true, title: "Use what's around you", description: "Snap a photo of something you're curious about and talk about it in Spanish." },
+          { type: "video", src: "/videos/conversation_edited2.mp4", poster: "/posters/conversation_edited2.jpg", hasSound: true, title: "Talk about what matters to you", description: "Debate the latest news, geek out about CRISPR technology, or even go on a rant, in Spanish and English, based on your proficiency." },
+          { type: "video", src: "/videos/lesson_walkthrough_sound.mp4", poster: "/posters/lesson_walkthrough_sound.jpg", hasSound: true, title: "Lessons woven in", description: <>Catch up with grammar reminders or <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>cheat sheets</span> along the way.</> },
+          { type: "video", src: "/videos/exercise_edited.mp4", poster: "/posters/exercise_edited.jpg", hasSound: true, title: "Hone in on your weak spots", description: <>Practice with customized short drills that show up <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>organically</span>.</> },
+        ]}
       />
 
       {/* ── 3. Games, not quizzes ── */}
-      <FeatureSection
+      <FeatureShowcase
         id="games"
-        title={<>Interactive games<br className="hidden md:block" /> that aren&apos;t drills.</>}
-        description={<>Solve a murder mystery. Go on a mission at a Mexican market. Build a story together — in Spanish. <span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>You&apos;re practicing past tense and you don&apos;t even notice.</span></>}
-        media={<DemoCarousel screens={[
-          { type: "video", src: "/videos/detective_edited.mp4", poster: "/posters/detective_edited.jpg", label: "Detective game demo", hasSound: true },
-          { type: "video", src: "/videos/hangman_edit.mp4", poster: "/posters/hangman_edit.jpg", label: "Hangman game demo" },
-        ]} />}
-        reverse
-        background="#FFF8F3"
+        sectionTitle={<>Interactive games that aren&apos;t drills.</>}
+        background="#F5E8DE"
+        slides={[
+          { type: "video", src: "/videos/detective_edited.mp4", poster: "/posters/detective_edited.jpg", hasSound: true, title: "Solve a mystery in Spanish", description: <>Play detective, investigate clues, interrogate suspects. <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>You&apos;re practicing past tense and it&apos;s fun.</span></> },
+          { type: "video", src: "/videos/hangman_edit.mp4", poster: "/posters/hangman_edit.jpg", title: "Classic games, new language", description: "Word games that build vocabulary naturally. Simple, fun, and surprisingly effective." },
+        ]}
       />
 
-      {/* ── 4 & 5. Curriculum + Insights (shared demo) ── */}
-      <section id="curriculum" className="relative px-5 py-10 sm:py-20 md:py-28 overflow-hidden">
-        {/* Carousel centered absolutely on desktop */}
-        <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <DemoCarousel screens={[
-            { type: "video", src: "/videos/journey_edited.mp4", poster: "/posters/journey_edited.jpg", label: "Insights review" },
-            { type: "video", src: "/videos/silent_curriculum.mp4", poster: "/posters/silent_curriculum.jpg", label: "Curriculum tracking" },
-            { type: "video", src: "/videos/correction_silent_edited.mp4", poster: "/posters/correction_silent_edited.jpg", label: "Correction details" },
-          ]} />
-        </div>
-
-        <div className="mx-auto max-w-6xl relative">
-          {/* Section 4 — left half */}
-          <div className="md:w-[33%] text-left mb-8 sm:mb-16 md:mb-24">
-            <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4"
-              style={{ color: "var(--color-text)" }}
-            >
-              A real learning system,<br className="hidden md:block" /> not just vibes.
-            </h2>
-            <p
-              className="text-sm sm:text-base md:text-lg leading-relaxed"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              100s of grammar topics, organized by difficulty, adapting to what you get wrong. Without a fixed roadmap. You just talk, and it adjusts. <span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>The best curriculum is the one that disappears.</span>
-            </p>
-          </div>
-
-          {/* Carousel for mobile */}
-          <div className="flex md:hidden justify-center mb-8 sm:mb-16">
-            <DemoCarousel screens={[
-            { type: "video", src: "/videos/journey_edited.mp4", poster: "/posters/journey_edited.jpg", label: "Insights review" },
-            { type: "video", src: "/videos/silent_curriculum.mp4", poster: "/posters/silent_curriculum.jpg", label: "Curriculum tracking" },
-            { type: "video", src: "/videos/correction_silent_edited.mp4", poster: "/posters/correction_silent_edited.jpg", label: "Correction details" },
-          ]} />
-          </div>
-
-          {/* Section 5 — right half */}
-          <div className="md:w-[33%] md:ml-auto text-left">
-            <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4"
-              style={{ color: "var(--color-text)" }}
-            >
-              Insights that actually stick.
-            </h2>
-            <p
-              className="text-sm sm:text-base md:text-lg leading-relaxed"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              Mixing up <em>ser</em> and <em>estar</em>? Tuteo catches the mistakes you don&apos;t even know you&apos;re making — gently, without interrupting the conversation.<br /><span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>The kind of insight that makes you never get it wrong again.</span>
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* ── 4 & 5. Curriculum + Insights ── */}
+      <FeatureShowcase
+        id="curriculum"
+        sectionTitle="A real learning system, not just vibes."
+        slides={[
+          { type: "video", src: "/videos/journey_edited.mp4", poster: "/posters/journey_edited.jpg", title: "Your learning journey", description: <>See your progress across 100s of grammar topics, organized by difficulty and adapting to what you get wrong. <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>The best curriculum is the one that disappears.</span></> },
+          { type: "video", src: "/videos/silent_curriculum.mp4", poster: "/posters/silent_curriculum.jpg", title: "Structured, not rigid", description: <>No fixed roadmap. You just talk, and the curriculum adjusts. <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>Every conversation moves you forward.</span></> },
+          { type: "video", src: "/videos/insights_edited.mp4", poster: "/posters/insights_edited.jpg", title: "Insights that actually stick", description: <>Mixing up ser and estar? Tuteo catches the mistakes you don&apos;t even know you&apos;re making, gently, without interrupting the conversation. <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>The kind of insight that never lets you get it wrong again.</span></> },
+          { type: "video", src: "/videos/correction_silent_edited.mp4", poster: "/posters/correction_silent_edited.jpg", title: "Insights that actually stick", description: <>Mixing up ser and estar? Tuteo catches the mistakes you don&apos;t even know you&apos;re making, gently, without interrupting the conversation. <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>The kind of insight that never lets you get it wrong again.</span></> },
+        ]}
+      />
 
       {/* ── 6. Language Pulse (climax) ── */}
-      <FeatureSection
+      <FeatureShowcase
         id="pulse"
-        title={<>Your Spanish has a pulse.<br className="hidden md:block" /> Watch it get stronger.</>}
-        description={<><span style={{ color: "var(--color-primary)", fontWeight: 700, fontSize: "1.1em" }}>We measure your Spanish, not your streak.</span> Speaking speed. Grammar accuracy. Vocabulary depth. Real metrics that tell you if you&apos;re actually improving.</>}
-        media={<DemoCarousel screens={[
-          { type: "image", src: "/images/language-pulse.png", label: "Language Pulse dashboard" },
-        ]} />}
-        background="#FFF8F3"
+        sectionTitle="Your Spanish has a pulse. Watch it get stronger."
+        background="#F5E8DE"
+        slides={[
+          { type: "image", src: "/images/language-pulse.png", title: "Real metrics, not streaks", description: "Speaking speed, grammar accuracy, and vocabulary depth will tell you how you're actually improving." },
+        ]}
       />
 
       {/* ── 7. How It Works ── */}
@@ -234,7 +188,7 @@ export default function Home() {
               {
                 step: "1",
                 title: "Find your level",
-                body: "Take a quick placement test or select your level. Complete beginner? She'll mix in English. Already conversational? She'll push you further.",
+                body: "Take a quick placement test or select your level. Complete beginner? Tuteo will mix in English. Already conversational? Tuteo will push you further.",
               },
               {
                 step: "2",
@@ -244,12 +198,12 @@ export default function Home() {
               {
                 step: "3",
                 title: "Start talking",
-                body: "Talk about your day, debate the news, solve a murder mystery — she adapts in real time, weaves in exercises, and meets you exactly where you are.",
+                body: "Talk about your day, debate the news, solve a murder mystery,she adapts in real time, weaves in exercises, and meets you exactly where you are.",
               },
               {
                 step: "4",
                 title: "Check your vitals",
-                body: "See what you nailed, what tripped you up, and why — then check your Language Pulse: speaking speed, accuracy, vocabulary depth.",
+                body: "See what you nailed, what tripped you up, and why,then check your Language Pulse: speaking speed, accuracy, vocabulary depth.",
               },
             ].map((item) => (
               <div
@@ -284,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* ── 8. Comparison ── */}
-      <section className="px-5 py-16 sm:py-24" style={{ background: "#FFF8F3" }}>
+      <section className="px-5 py-16 sm:py-24" style={{ background: "#F5E8DE" }}>
         <div className="mx-auto max-w-4xl">
           <h2
             className="text-3xl sm:text-4xl font-medium text-center mb-12"
@@ -313,8 +267,8 @@ export default function Home() {
             Hi, I&apos;m the person behind Tuteo
           </h2>
           <ExpandableText
-            preview={<>I designed and built Tuteo to explore how AI can transform language learning — from product strategy and user research to design systems and technical implementation.</>}
-            full={<><br /><br />I find that the best AI products find the moments and places where AI capabilities magnify outcomes, and align everything around them. While building Tuteo I was constantly looking for AI magical moments that enhance my product (and not clutter it). In the end I came to the conclusion that AI magic is not only big things — like getting AI to code on the fly and do everything under the sun for you. It&apos;s also making the little things your product solves for users so much better. And there is a lot of work that goes into aligning AI with the experience you want users to have, as well as your goals and metrics. Simply put, AI magic today is a feeling — a realization you were impacted by AI in a way you didn&apos;t expect, for the better. It could have made a normally difficult task feel surprisingly easy, or solved a problem exactly at its core, faster than ever.<br /><br />For language learning, it could be catching a common mistake you make and sharing the insight that finally sticks. It could be pulling you into a conversation only to realize after it&apos;s done that you actually enjoyed it, and spoke more Spanish than you expected. I&apos;m looking forward to iterating and seeing where these products will take us.</>}
+            preview={<>I designed and built Tuteo to explore how AI can transform language learning, from product strategy and user research to design systems and technical implementation.</>}
+            full={<><br /><br /> </>}
           />
           <Link
             href="/contact"

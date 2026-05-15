@@ -17,7 +17,7 @@ function Navbar() {
         <div className="hidden sm:flex items-center gap-8">
           <a href="#features" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--color-text)" }}>Features</a>
           <a href="#how-it-works" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--color-text)" }}>How It Works</a>
-          <a href="#about" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--color-text)" }}>About</a>
+
           <Link
             href="/contact"
             className="inline-flex items-center px-5 py-2 rounded-xl text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
@@ -251,7 +251,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 9. About ── */}
+      {/* ── 9. About (commented out) ──
       <section id="about" className="px-5 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl text-left">
           <p
@@ -279,6 +279,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      */}
 
       {/* ── Footer ── */}
       <footer className="px-5 py-8 text-center">

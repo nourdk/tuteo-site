@@ -154,17 +154,23 @@ export default function FeatureShowcase({ id, sectionTitle, slides, background }
                       {slides.map((slide, i) => (
                         <div key={i} className="w-[180px] sm:w-[200px] md:w-[220px] flex-shrink-0 h-full relative" style={{ background: "linear-gradient(180deg, #F5E8ED 0%, #F9F0DA 100%)" }}>
                           {slide.type === "video" ? (
-                            <video
-                              ref={(el) => { videoRefs.current[i] = el; }}
-                              className="w-full h-full object-cover cursor-pointer"
-                              src={slide.src}
-                              poster={slide.poster}
-                              onClick={handlePlayTap}
-                              muted
-                              playsInline
-                              preload="auto"
-                              onEnded={() => setPlaying(false)}
-                            />
+                            <>
+                              {/* Poster image as background so it's always visible */}
+                              {slide.poster && (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={slide.poster} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                              )}
+                              <video
+                                ref={(el) => { videoRefs.current[i] = el; }}
+                                className="relative w-full h-full object-cover cursor-pointer"
+                                src={slide.src}
+                                onClick={handlePlayTap}
+                                muted
+                                playsInline
+                                preload="auto"
+                                onEnded={() => setPlaying(false)}
+                              />
+                            </>
                           ) : (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img

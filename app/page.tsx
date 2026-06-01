@@ -133,10 +133,10 @@ export default function Home() {
         id="features"
         sectionTitle="Real conversations. Learning woven in."
         slides={[
-          { type: "video", src: "/videos/camera_edited.mp4", poster: "/posters/camera_edited.jpg", hasSound: true, title: "Use what's around you", description: "Snap a photo of something you're curious about and talk about it in Spanish." },
-          { type: "video", src: "/videos/conversation_edited2.mp4", poster: "/posters/conversation_edited2.jpg", hasSound: true, title: "Talk about what matters to you", description: "Debate the latest news, geek out about CRISPR technology, or even go on a rant, in Spanish and English, based on your proficiency." },
           { type: "video", src: "/videos/lesson_walkthrough_sound.mp4", poster: "/posters/lesson_walkthrough_sound.jpg", hasSound: true, title: "Lessons woven in", description: <>Catch up with grammar reminders or <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>cheat sheets</span> along the way.</> },
           { type: "video", src: "/videos/exercise_edited.mp4", poster: "/posters/exercise_edited.jpg", hasSound: true, title: "Hone in on your weak spots", description: <>Practice with customized short drills that show up <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>organically</span>.</> },
+          { type: "video", src: "/videos/camera_edited.mp4", poster: "/posters/camera_edited.jpg", hasSound: true, title: "Use what's around you", description: "Snap a photo of something you're curious about and talk about it in Spanish." },
+          { type: "video", src: "/videos/conversation_edited2.mp4", poster: "/posters/conversation_edited2.jpg", hasSound: true, title: "Talk about what matters to you", description: "Debate the latest news, geek out about CRISPR technology, or even go on a rant, in Spanish and English, based on your proficiency." },
         ]}
       />
 

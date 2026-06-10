@@ -5,6 +5,24 @@ import ExpandableText from "./components/ExpandableText";
 import FeatureShowcase from "./components/FeatureShowcase";
 
 
+/* ───── Scroll arrow ───── */
+
+function ScrollArrow() {
+  return (
+    <div className="flex justify-center -my-5 relative z-20">
+      <div
+        className="w-10 h-10 rounded-full flex items-center justify-center"
+        style={{ background: "#FFFCF8", border: "2px solid var(--color-primary-light)" }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <polyline points="6 13 12 19 18 13" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 /* ───── Shared components ───── */
 
 function Navbar() {
@@ -128,6 +146,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ScrollArrow />
+
       {/* ── 2. Real conversations ── */}
       <FeatureShowcase
         id="features"
@@ -140,6 +160,8 @@ export default function Home() {
         ]}
       />
 
+      <ScrollArrow />
+
       {/* ── 3. Games, not quizzes ── */}
       <FeatureShowcase
         id="games"
@@ -150,6 +172,8 @@ export default function Home() {
           { type: "video", src: "/videos/hangman_edit.mp4", poster: "/posters/hangman_edit.jpg", title: "Classic games, new language", description: "Word games that build vocabulary naturally. Simple, fun, and surprisingly effective." },
         ]}
       />
+
+      <ScrollArrow />
 
       {/* ── 4 & 5. Curriculum + Insights ── */}
       <FeatureShowcase
@@ -163,6 +187,8 @@ export default function Home() {
         ]}
       />
 
+      <ScrollArrow />
+
       {/* ── 6. Language Pulse (climax) ── */}
       <FeatureShowcase
         id="pulse"
@@ -172,6 +198,8 @@ export default function Home() {
           { type: "image", src: "/images/language-pulse.png", title: "Real metrics, not streaks", description: "Speaking speed, grammar accuracy, and vocabulary depth will tell you how you're actually improving." },
         ]}
       />
+
+      <ScrollArrow />
 
       {/* ── 7. How It Works ── */}
       <section id="how-it-works" className="px-5 py-16 sm:py-24">
